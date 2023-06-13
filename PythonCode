@@ -1,0 +1,46 @@
+tasks = []
+
+def print_tasks():
+    if len(tasks) == 0:
+        print("No tasks.")
+    else:
+        print("Tasks:")
+        for i, task in enumerate(tasks):
+            print(f"{i+1}. {task}")
+
+def add_task(task):
+    tasks.append(task)
+    print("Task added.")
+
+def delete_task(task_index):
+    if task_index < 1 or task_index > len(tasks):
+        print("Invalid task index.")
+    else:
+        deleted_task = tasks.pop(task_index - 1)
+        print(f"Deleted task: {deleted_task}")
+
+def main():
+    while True:
+        print("\n--- To-Do List ---")
+        print("1. Print tasks")
+        print("2. Add task")
+        print("3. Delete task")
+        print("4. Exit")
+        choice = input("Enter your choice (1-4): ")
+
+        if choice == "1":
+            print_tasks()
+        elif choice == "2":
+            task = input("Enter task: ")
+            add_task(task)
+        elif choice == "3":
+            task_index = int(input("Enter task index to delete: "))
+            delete_task(task_index)
+        elif choice == "4":
+            print("Exiting...")
+            break
+        else:
+            print("Invalid choice. Try again.")
+
+if __name__ == "__main__":
+    main()
